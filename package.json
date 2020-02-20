@@ -16,22 +16,11 @@
     "lint:fix": "yarn lint --fix",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
     "format": "prettier \"**/*.{md,mdx,json,yaml}\" --write",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:update": "jest --updateSnapshot",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --ci --runInBand",
-    "lerna": "lerna",
-    "plop": "plop",
-    "cy:run": "cross-env CYPRESS_baseUrl=http://localhost:9000 cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
-    "cy:open": "cypress open",
-    "start-server-and-test": "start-server-and-test",
-    "concurrently": "concurrently"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "build": "yarn workspace www build",
+    "dev": "yarn start",
+    "start": "yarn workspace www develop",
+    "serve": "yarn workspace www serve",
+    "stage": "yarn build && yarn serve"
   },
   "devDependencies": {
     "@testing-library/cypress": "^5.3.0",

@@ -1,6 +1,6 @@
 {
   "name": "@lekoarts/gatsby-theme-graphql-playground",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "LekoArts <hello@lekoarts.de>",
   "description": "GraphQL Playground to showcase the power of GraphQL. Write your queries and documentation with MDX and display queries in an interactive GraphiQL window. It can source from your localhost or a remote URL (e.g. Codesandbox).",
   "license": "MIT",
@@ -26,13 +26,13 @@
     "@theme-ui/presets": "^0.2.44",
     "@theme-ui/prism": "^0.2.50",
     "@theme-ui/sidenav": "^0.2.53",
-    "gatsby-plugin-mdx": "^1.0.70",
+    "gatsby-plugin-mdx": "^1.0.73",
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-theme-ui": "^0.2.53",
     "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-source-filesystem": "^2.1.48",
     "is-absolute-url": "^3.0.3",
-    "re-resizable": "^6.1.1",
+    "re-resizable": "^6.2.0",
     "react-helmet": "^5.2.1",
     "theme-ui": "^0.2.52"
   },

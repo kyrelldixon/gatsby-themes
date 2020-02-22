@@ -19,22 +19,43 @@ const Header = () => {
   }
 
   return (
-    <header sx={{ mb: [5, 6] }}>
-      <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
-        <Link
-          to={replaceSlashes(`/${basePath}`)}
-          aria-label={`${siteTitle} - Back to home`}
-          sx={{ color: `heading`, textDecoration: `none` }}
+    <header
+      sx={{
+        position: `fixed`,
+        top: 0,
+        left: 0,
+        zIndex: 10,
+        width: `100%`,
+        backgroundColor: `background`,
+        borderBottomWidth: 1,
+        borderBottomStyle: `solid`,
+        borderColor: `#ececec`,
+      }}
+    >
+      <div sx={{ px: 16, py: 2 }}>
+        <Flex
+          sx={{
+            alignItems: `center`,
+            justifyContent: `space-between`,
+            a: { color: `secondary`, ":hover": { color: `heading` } },
+          }}
         >
-          <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: [3, 4] }}>{siteTitle}</h1>
-        </Link>
-        <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
-      </Flex>
-      <div
+          <Link
+            to={replaceSlashes(`/${basePath}`)}
+            aria-label={`${siteTitle} - Back to home`}
+            sx={{ color: `heading`, textDecoration: `none` }}
+          >
+            <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: 2 }}>{siteTitle}</h1>
+          </Link>
+          {/* <ColorModeToggle isDark={isDark} toggle={toggleColorMode} /> */}
+          <Navigation nav={nav} />
+        </Flex>
+      </div>
+      {/* <div
         sx={{
           boxSizing: `border-box`,
           display: `flex`,
-          variant: `dividers.bottom`,
+          
           alignItems: `center`,
           justifyContent: `space-between`,
           mt: 3,
@@ -43,7 +64,6 @@ const Header = () => {
           flexFlow: `wrap`,
         }}
       >
-        <Navigation nav={nav} />
         {externalLinks && externalLinks.length > 0 && (
           <div sx={{ "a:not(:first-of-type)": { ml: 3 }, fontSize: [1, `18px`] }}>
             {externalLinks.map(link => (
@@ -53,7 +73,7 @@ const Header = () => {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
     </header>
   )
 }

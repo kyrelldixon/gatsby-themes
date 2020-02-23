@@ -3,14 +3,12 @@ import { jsx, useColorMode, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import { Flex } from "@theme-ui/components"
 import useSiteMetadata from "../hooks/use-site-metadata"
-import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
 import ColorModeToggle from "./colormode-toggle"
 import Navigation from "./navigation"
 import replaceSlashes from "../utils/replaceSlashes"
 
-const Header = () => {
+const Header = ({ nav, basePath, toggleNav, navOpen }) => {
   const { siteTitle } = useSiteMetadata()
-  const { navigation: nav, externalLinks, basePath } = useMinimalBlogConfig()
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
   const toggleColorMode = (e: any) => {
@@ -50,7 +48,7 @@ const Header = () => {
             </h1>
           </Link>
           {/* <ColorModeToggle isDark={isDark} toggle={toggleColorMode} /> */}
-          <Navigation nav={nav} />
+          <Navigation nav={nav} toggleNav={toggleNav} navOpen={navOpen} />
         </Flex>
       </div>
       {/* <div

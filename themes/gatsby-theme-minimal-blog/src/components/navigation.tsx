@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from "react"
+import React from "react"
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import { Collapse } from "react-burgers"
@@ -10,12 +10,13 @@ type NavigationProps = {
   nav: {
     title: string
     slug: string
-  }[]
+  }
+  navOpen: boolean
+  toggleNav: () => void
 }
 
-const Navigation = ({ nav }: NavigationProps) => {
+const Navigation = ({ nav, toggleNav, navOpen }: NavigationProps) => {
   const { basePath } = useMinimalBlogConfig()
-  const [navOpen, setNavOpen] = useState(false)
 
   return (
     <React.Fragment>
@@ -46,7 +47,7 @@ const Navigation = ({ nav }: NavigationProps) => {
               lineSpacing={4}
               borderRadius={6}
               active={navOpen}
-              onClick={() => setNavOpen(!navOpen)}
+              onClick={toggleNav}
               padding="0"
               customProps={{
                 "aria-label": `Menu`,

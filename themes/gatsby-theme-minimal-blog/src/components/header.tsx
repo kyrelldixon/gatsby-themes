@@ -32,12 +32,12 @@ const Header = () => {
         borderColor: `#ececec`,
       }}
     >
-      <div sx={{ px: 16, py: 2 }}>
+      <div sx={{ px: 16, py: 3 }}>
         <Flex
           sx={{
             alignItems: `center`,
             justifyContent: `space-between`,
-            a: { color: `secondary`, ":hover": { color: `heading` } },
+            a: { color: `heading` },
           }}
         >
           <Link
@@ -45,7 +45,9 @@ const Header = () => {
             aria-label={`${siteTitle} - Back to home`}
             sx={{ color: `heading`, textDecoration: `none` }}
           >
-            <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: 2 }}>{siteTitle}</h1>
+            <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: [1, 2], pb: `1px` }}>
+              Kai<span sx={{ color: `blue.6` }}>Codes</span>
+            </h1>
           </Link>
           {/* <ColorModeToggle isDark={isDark} toggle={toggleColorMode} /> */}
           <Navigation nav={nav} />

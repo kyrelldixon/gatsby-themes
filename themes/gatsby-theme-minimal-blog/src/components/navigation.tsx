@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import React from "react"
+import React, { useState } from "react"
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
+import { Collapse } from "react-burgers"
 import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
 import replaceSlashes from "../utils/replaceSlashes"
 
@@ -14,6 +15,7 @@ type NavigationProps = {
 
 const Navigation = ({ nav }: NavigationProps) => {
   const { basePath } = useMinimalBlogConfig()
+  const [navOpen, setNavOpen] = useState(false)
 
   return (
     <React.Fragment>
@@ -37,6 +39,21 @@ const Navigation = ({ nav }: NavigationProps) => {
               </Styled.a>
             ))}
           </div>
+          <span sx={{ display: [`inline`, `none`] }}>
+            <Collapse
+              width={22}
+              lineHeight={2}
+              lineSpacing={4}
+              borderRadius={6}
+              active={navOpen}
+              onClick={() => setNavOpen(!navOpen)}
+              padding="0"
+              customProps={{
+                "aria-label": `Menu`,
+                "aria-controls": `navigation`,
+              }}
+            />
+          </span>
         </nav>
       )}
     </React.Fragment>

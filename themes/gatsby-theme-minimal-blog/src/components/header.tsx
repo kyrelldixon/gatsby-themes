@@ -1,20 +1,13 @@
 /** @jsx jsx */
-import { jsx, useColorMode, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { Flex } from "@theme-ui/components"
 import useSiteMetadata from "../hooks/use-site-metadata"
-import ColorModeToggle from "./colormode-toggle"
 import Navigation from "./navigation"
 import replaceSlashes from "../utils/replaceSlashes"
 
 const Header = ({ nav, basePath, toggleNav, navOpen }) => {
   const { siteTitle } = useSiteMetadata()
-  const [colorMode, setColorMode] = useColorMode()
-  const isDark = colorMode === `dark`
-  const toggleColorMode = (e: any) => {
-    e.preventDefault()
-    setColorMode(isDark ? `light` : `dark`)
-  }
 
   return (
     <header
@@ -44,10 +37,9 @@ const Header = ({ nav, basePath, toggleNav, navOpen }) => {
             sx={{ color: `heading`, textDecoration: `none` }}
           >
             <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: [1, 2], pb: `1px` }}>
-              Kai<span sx={{ color: `blue.6` }}>Codes</span>
+              Kai<span sx={{ color: `primary` }}>Codes</span>
             </h1>
           </Link>
-          {/* <ColorModeToggle isDark={isDark} toggle={toggleColorMode} /> */}
           <Navigation nav={nav} toggleNav={toggleNav} navOpen={navOpen} />
         </Flex>
       </div>

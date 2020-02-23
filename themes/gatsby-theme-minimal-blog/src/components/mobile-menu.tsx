@@ -1,54 +1,74 @@
 /** @jsx jsx */
 import React from "react"
 import { Link } from "gatsby"
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, useColorMode } from "theme-ui"
 import replaceSlashes from "../utils/replaceSlashes"
+import ColorModeToggle from "./colormode-toggle"
 
-const MobileMenu = ({ nav, basePath }) => (
-  <div
-    sx={{
-      position: `absolute`,
-      height: `100%`,
-      zIndex: `2`,
-      top: 0,
-      right: 0,
-      left: 0,
-    }}
-  >
+type MobileMenuProps = {
+  nav: {
+    title: string
+    slug: string
+  }
+  basePath: string
+}
+
+const MobileMenu = ({ nav, basePath }: MobileMenuProps) => {
+  const [colorMode, setColorMode] = useColorMode()
+  const isDark = colorMode === `dark`
+  const toggleColorMode = (e: any) => {
+    e.preventDefault()
+    setColorMode(isDark ? `light` : `dark`)
+  }
+
+  return (
     <div
       sx={{
+        position: `absolute`,
         height: `100%`,
-        display: `flex`,
-        alignItems: `center`,
-        flexGrow: 1,
-        px: 3,
-        backgroundColor: `background`,
+        zIndex: `2`,
+        top: 0,
+        right: 0,
+        left: 0,
       }}
     >
-      <ul
+      <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
+      <div
         sx={{
-          margin: 0,
-          padding: 0,
-          listStyle: `none`,
-          fontSize: 5,
-          fontWeight: `bold`,
+          height: `100%`,
+          display: `flex`,
+          alignItems: `center`,
+          flexGrow: 1,
+          px: 3,
+          backgroundColor: `background`,
         }}
       >
-        {nav.map(item => (
-          <li sx={{ mb: 4 }}>
-            <Styled.a
-              key={item.slug}
-              as={Link}
-              activeClassName="active"
-              to={replaceSlashes(`/${basePath}/${item.slug}`)}
-            >
-              {item.title}
-            </Styled.a>
-          </li>
-        ))}
-      </ul>
+        <ul
+          sx={{
+            margin: 0,
+            padding: 0,
+            listStyle: `none`,
+            fontSize: 5,
+            fontWeight: `bold`,
+            color: `text`,
+            a: { color: `heading` },
+          }}
+        >
+          {nav.map(item => (
+            <li sx={{ mb: 4 }}>
+              <Styled.a
+                key={item.slug}
+                as={Link}
+                activeClassName="active"
+                to={replaceSlashes(`/${basePath}/${item.slug}`)}
+              >
+                {item.title}
+              </Styled.a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-  </div>
-)
-
+  )
+}
 export default MobileMenu

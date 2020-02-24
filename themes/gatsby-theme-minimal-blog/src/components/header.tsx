@@ -11,12 +11,8 @@ const Header = ({ nav, basePath, toggleNav, navOpen }) => {
 
   return (
     <header
+      className="fixed top-0 inset-x-0 z-20"
       sx={{
-        position: `fixed`,
-        top: 0,
-        left: 0,
-        zIndex: 10,
-        width: `100%`,
         backgroundColor: `background`,
         borderBottomWidth: 1,
         borderBottomStyle: `solid`,

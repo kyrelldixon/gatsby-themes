@@ -22,16 +22,7 @@ const MobileMenu = ({ nav, basePath }: MobileMenuProps) => {
   }
 
   return (
-    <div
-      sx={{
-        position: `absolute`,
-        height: `100%`,
-        zIndex: `2`,
-        top: 0,
-        right: 0,
-        left: 0,
-      }}
-    >
+    <div className="fixed inset-0 z-10">
       <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
       <div
         sx={{

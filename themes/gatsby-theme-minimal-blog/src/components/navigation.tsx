@@ -23,14 +23,13 @@ const Navigation = ({ nav, toggleNav, navOpen }: NavigationProps) => {
       {nav && nav.length > 0 && (
         <nav
           sx={{
-            "a:not(:last-of-type)": { mr: 3 },
-            fontSize: [1, `18px`],
             ".active": { color: `heading` },
           }}
         >
-          <div sx={{ display: [`none`, `block`] }}>
+          <div sx={{ display: [`none`, `block`], a: { color: `heading` } }}>
             {nav.map(item => (
               <Styled.a
+                className="mr-10 last:mr-0"
                 key={item.slug}
                 as={Link}
                 activeClassName="active"

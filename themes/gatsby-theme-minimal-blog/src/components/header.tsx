@@ -19,12 +19,11 @@ const Header = ({ nav, basePath, toggleNav, navOpen }) => {
         borderColor: `#ececec`,
       }}
     >
-      <div sx={{ px: 16, py: 3 }}>
+      <div className="lg:text-lg" sx={{ px: 16, py: 3 }}>
         <Flex
           sx={{
             alignItems: `center`,
             justifyContent: `space-between`,
-            a: { color: `heading` },
           }}
         >
           <Link
@@ -37,6 +36,13 @@ const Header = ({ nav, basePath, toggleNav, navOpen }) => {
             </h1>
           </Link>
           <Navigation nav={nav} toggleNav={toggleNav} navOpen={navOpen} />
+          <Link
+            className="bg-primary px-4 py-1 text-white text-sm font-medium rounded-sm shadow-blue"
+            sx={{ display: [`none`, `block`] }}
+            to="/contact"
+          >
+            Contact
+          </Link>
         </Flex>
       </div>
       {/* <div

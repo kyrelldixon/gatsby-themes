@@ -15,8 +15,13 @@ module.exports = {
         },
         primary: `#3340FF`,
       },
+      boxShadow: {
+        blue: `inset 0 -1px 0 rgba(0,0,0,0.1), 0 1px 2px rgba(28,35,139,0.1), 0 2px 5px rgba(41,52,204,0.2)`,
+      },
     },
   },
-  variants: {},
+  variants: {
+    margin: [`responsive`, `last`],
+  },
   plugins: [],
 }

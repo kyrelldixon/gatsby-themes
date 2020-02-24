@@ -1,11 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
-import { Link } from "gatsby"
-import { Flex } from "@theme-ui/components"
+import { jsx } from "theme-ui"
 import Layout from "./layout"
 import Listing from "./listing"
-import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
-import replaceSlashes from "../utils/replaceSlashes"
 import SEO from "./seo"
 
 type PostsProps = {
@@ -26,19 +22,22 @@ const Blog = ({ posts }: PostsProps) => {
   return (
     <Layout>
       <SEO title="Blog" />
-      <div sx={{ p: { margin: 0 }, textAlign: `center` }}>
-        <p sx={{ color: `gray.7` }}>Discover more on my</p>
-        <h2 sx={{ margin: 0, fontSize: [6], fontWeight: `800` }}>Blog</h2>
-        <p sx={{ mb: 2 }}>
-          Get an exclusive behind the scenes look into my mind and stuff by joining my blog. Sign up to receive my
-          monthly newsletter, so you never miss a new article.
+      <div className="text-center max-w-lg mx-auto mb-4">
+        <p className="text-md opacity-50 mb-3 md:mb-6">Discover more of my</p>
+        <h2 className="text-5xl font-bold mb-6 text-black leading-10 md:text-6xl md:mb-8">Articles</h2>
+        <p className="text-lg mb-4 md:text-xl md:mb-6">
+          Check out some of my most popular tutorials where I make complex code simple. Sign up to receive my
+          newsletter, so you never miss a new article.
         </p>
-        <form>
-          <label sx={{ color: `primary` }} htmlFor="email">
-            Email
-          </label>
-          <input type="email" name="email" id="email" placeholder="your@email.com" sx={{ pt: 2, pb: 1, py: 2 }} />
-          <button type="submit" sx={{ backgroundColor: `primary`, color: `white`, px: 2, py: 1 }}>
+        <form className="flex justify-between shadow-md max-w-sm mx-auto">
+          <input
+            id="email"
+            className="px-4 py-2 flex-grow rounded-l-sm"
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+          />
+          <button className="text-white px-4 py-2 rounded-r-sm" type="submit" sx={{ backgroundColor: `primary` }}>
             Subscribe
           </button>
         </form>

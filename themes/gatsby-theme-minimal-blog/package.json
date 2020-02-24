@@ -29,6 +29,7 @@
     "@theme-ui/presets": "^0.2.44",
     "gatsby-plugin-catch-links": "^2.1.25",
     "gatsby-plugin-feed": "^2.3.27",
+    "gatsby-plugin-postcss": "^2.1.20",
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-theme-ui": "^0.2.53",
     "gatsby-plugin-typescript": "^2.1.27",
@@ -55,5 +56,9 @@
     "type": "git",
     "url": "https://github.com/LekoArts/gatsby-themes.git",
     "directory": "themes/gatsby-theme-minimal-blog"
+  },
+  "devDependencies": {
+    "gatsby-plugin-purgecss": "^4.0.1",
+    "tailwindcss": "^1.2.0"
   }
 }

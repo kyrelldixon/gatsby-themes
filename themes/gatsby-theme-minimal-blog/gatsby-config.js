@@ -24,5 +24,20 @@ module.exports = options => ({
     `gatsby-plugin-typescript`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-theme-ui`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        // eslint-disable-next-line global-require
+        postCssPlugins: [require(`tailwindcss`)(`./tailwind.config.js`)],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true,
+        tailwind: true,
+        purgeOnly: [`src/styles/style.css`],
+      },
+    },
   ],
 })

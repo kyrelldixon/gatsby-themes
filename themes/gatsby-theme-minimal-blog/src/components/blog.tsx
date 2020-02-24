@@ -37,7 +37,7 @@ const Blog = ({ posts }: PostsProps) => {
             name="email"
             placeholder="your@email.com"
           />
-          <button className="text-white px-4 py-2 rounded-r-sm" type="submit" sx={{ backgroundColor: `primary` }}>
+          <button className="text-white px-4 py-2 rounded-r-sm bg-primary" type="submit">
             Subscribe
           </button>
         </form>

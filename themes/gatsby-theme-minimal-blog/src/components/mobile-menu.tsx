@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import React from "react"
 import { Link } from "gatsby"
-import { jsx, Styled, useColorMode } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import replaceSlashes from "../utils/replaceSlashes"
-import ColorModeToggle from "./colormode-toggle"
 
 type MobileMenuProps = {
   nav: {
@@ -14,16 +13,8 @@ type MobileMenuProps = {
 }
 
 const MobileMenu = ({ nav, basePath }: MobileMenuProps) => {
-  const [colorMode, setColorMode] = useColorMode()
-  const isDark = colorMode === `dark`
-  const toggleColorMode = (e: any) => {
-    e.preventDefault()
-    setColorMode(isDark ? `light` : `dark`)
-  }
-
   return (
     <div className="fixed inset-0 z-10">
-      <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
       <div
         sx={{
           height: `100%`,

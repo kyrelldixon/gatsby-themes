@@ -16,8 +16,8 @@ module.exports = {
             slug: `/blog`,
           },
           {
-            title: `About`,
-            slug: `/about`,
+            title: `Contact`,
+            slug: `/contact`,
           },
         ],
         externalLinks: [
@@ -63,7 +63,7 @@ module.exports = {
         ],
       },
     },
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],

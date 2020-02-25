@@ -6,11 +6,13 @@ import { Collapse } from "react-burgers"
 import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
 import replaceSlashes from "../utils/replaceSlashes"
 
+type NavItem = {
+  title: string
+  slug: string
+}
+
 type NavigationProps = {
-  nav: {
-    title: string
-    slug: string
-  }
+  nav: NavItem[]
   navOpen: boolean
   toggleNav: () => void
 }
@@ -27,17 +29,11 @@ const Navigation = ({ nav, toggleNav, navOpen }: NavigationProps) => {
           }}
         >
           <div sx={{ display: [`none`, `block`], a: { color: `heading` } }}>
-            {nav.map(item => (
-              <Styled.a
-                className="mr-10 last:mr-0"
-                key={item.slug}
-                as={Link}
-                activeClassName="active"
-                to={replaceSlashes(`/${basePath}/${item.slug}`)}
-              >
-                {item.title}
-              </Styled.a>
-            ))}
+            {nav.map(item =>
+              !item.slug.includes(`contact`) ? (
+                <NavItem to={replaceSlashes(`/${basePath}/${item.slug}`)} title={item.title} />
+              ) : null
+            )}
           </div>
           <span sx={{ display: [`inline`, `none`] }}>
             <Collapse
@@ -59,5 +55,16 @@ const Navigation = ({ nav, toggleNav, navOpen }: NavigationProps) => {
     </React.Fragment>
   )
 }
+
+type NavItemProps = {
+  to: string
+  title: string
+}
+
+const NavItem = ({ to, title }: NavItemProps) => (
+  <Styled.a className="mr-10 last:mr-0" key={title} as={Link} activeClassName="active" to={to}>
+    {title}
+  </Styled.a>
+)
 
 export default Navigation

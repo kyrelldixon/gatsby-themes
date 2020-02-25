@@ -37,13 +37,8 @@ const MobileMenu = ({ nav, basePath }: MobileMenuProps) => {
           }}
         >
           {nav.map(item => (
-            <li sx={{ mb: 4 }}>
-              <Styled.a
-                key={item.slug}
-                as={Link}
-                activeClassName="active"
-                to={replaceSlashes(`/${basePath}/${item.slug}`)}
-              >
+            <li key={item.slug} sx={{ mb: 4 }}>
+              <Styled.a as={Link} activeClassName="active" to={replaceSlashes(`/${basePath}/${item.slug}`)}>
                 {item.title}
               </Styled.a>
             </li>

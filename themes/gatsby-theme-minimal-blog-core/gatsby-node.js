@@ -9,9 +9,9 @@ const withDefaults = require(`./utils/default-options`)
 exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
   const { program } = store.getState()
 
-  const { postsPath, pagesPath } = withDefaults(themeOptions)
+  const { postsPath } = withDefaults(themeOptions)
 
-  const dirs = [path.join(program.directory, postsPath), path.join(program.directory, pagesPath)]
+  const dirs = [path.join(program.directory, postsPath)]
 
   dirs.forEach(dir => {
     if (!fs.existsSync(dir)) {
@@ -87,14 +87,6 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
       slug: String
     }
     
-    interface Page @nodeInterface {
-      id: ID!
-      slug: String!
-      title: String!
-      excerpt(pruneLength: Int = 160): String!
-      body: String!
-    }
-    
     type MdxPost implements Node & Post {
       slug: String! @slugify
       title: String!
@@ -108,18 +100,10 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
       description: String
     }
     
-    type MdxPage implements Node & Page {
-      slug: String!
-      title: String!
-      excerpt(pruneLength: Int = 140): String! @mdxpassthrough(fieldName: "excerpt")
-      body: String! @mdxpassthrough(fieldName: "body")
-    }
-    
     type MinimalBlogConfig implements Node {
       basePath: String
       blogPath: String
       postsPath: String
-      pagesPath: String
       tagsPath: String
       externalLinks: [ExternalLink]
       navigation: [NavigationEntry]
@@ -140,11 +124,11 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
 
 exports.sourceNodes = ({ actions, createContentDigest }, themeOptions) => {
   const { createNode } = actions
+  // eslint-disable-next-line prettier/prettier
   const {
     basePath,
     blogPath,
     postsPath,
-    pagesPath,
     tagsPath,
     externalLinks,
     navigation,
@@ -155,7 +139,6 @@ exports.sourceNodes = ({ actions, createContentDigest }, themeOptions) => {
     basePath,
     blogPath,
     postsPath,
-    pagesPath,
     tagsPath,
     externalLinks,
     navigation,
@@ -179,7 +162,7 @@ exports.sourceNodes = ({ actions, createContentDigest }, themeOptions) => {
 exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDigest }, themeOptions) => {
   const { createNode, createParentChildLink } = actions
 
-  const { postsPath, pagesPath } = withDefaults(themeOptions)
+  const { postsPath } = withDefaults(themeOptions)
 
   // Make sure that it's an MDX node
   if (node.internal.type !== `Mdx`) {
@@ -188,7 +171,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
 
   // Create a source field
   // And grab the sourceInstanceName to differentiate the different sources
-  // In this case "postsPath" and "pagesPath"
+  // In this case "postsPath"
   const fileNode = getNode(node.parent)
   const source = fileNode.sourceInstanceName
 
@@ -232,39 +215,12 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
 
     createParentChildLink({ parent: node, child: getNode(mdxPostId) })
   }
-
-  // Check for "pages" and create the "Page" type
-  if (node.internal.type === `Mdx` && source === pagesPath) {
-    const fieldData = {
-      title: node.frontmatter.title,
-      slug: node.frontmatter.slug,
-    }
-
-    const mdxPageId = createNodeId(`${node.id} >>> MdxPage`)
-
-    createNode({
-      ...fieldData,
-      // Required fields
-      id: mdxPageId,
-      parent: node.id,
-      children: [],
-      internal: {
-        type: `MdxPage`,
-        contentDigest: createContentDigest(fieldData),
-        content: JSON.stringify(fieldData),
-        description: `Mdx implementation of the Page interface`,
-      },
-    })
-
-    createParentChildLink({ parent: node, child: getNode(mdxPageId) })
-  }
 }
 
 // These template are only data-fetching wrappers that import components
 const homepageTemplate = require.resolve(`./src/templates/homepage-query.tsx`)
 const blogTemplate = require.resolve(`./src/templates/blog-query.tsx`)
 const postTemplate = require.resolve(`./src/templates/post-query.tsx`)
-const pageTemplate = require.resolve(`./src/templates/page-query.tsx`)
 const tagTemplate = require.resolve(`./src/templates/tag-query.tsx`)
 const tagsTemplate = require.resolve(`./src/templates/tags-query.tsx`)
 
@@ -295,11 +251,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
           slug
         }
       }
-      allPage {
-        nodes {
-          slug
-        }
-      }
       tags: allPost(sort: { fields: tags___name, order: DESC }) {
         group(field: tags___name) {
           fieldValue
@@ -309,7 +260,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   `)
 
   if (result.errors) {
-    reporter.panicOnBuild(`There was an error loading your posts or pages`, result.errors)
+    reporter.panicOnBuild(`There was an error loading your posts`, result.errors)
     return
   }
 
@@ -324,20 +275,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       },
     })
   })
-
-  const pages = result.data.allPage.nodes
-
-  if (pages.length > 0) {
-    pages.forEach(page => {
-      createPage({
-        path: `/${basePath}/${page.slug}`.replace(/\/\/+/g, `/`),
-        component: pageTemplate,
-        context: {
-          slug: page.slug,
-        },
-      })
-    })
-  }
 
   const tags = result.data.tags.group
 

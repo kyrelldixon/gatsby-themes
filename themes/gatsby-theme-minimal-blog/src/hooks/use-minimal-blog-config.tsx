@@ -5,7 +5,6 @@ type Props = {
     basePath: string
     blogPath: string
     postsPath: string
-    pagesPath: string
     tagsPath: string
     externalLinks: {
       name: string
@@ -26,7 +25,6 @@ const useMinimalBlogConfig = () => {
         basePath
         blogPath
         postsPath
-        pagesPath
         tagsPath
         externalLinks {
           name

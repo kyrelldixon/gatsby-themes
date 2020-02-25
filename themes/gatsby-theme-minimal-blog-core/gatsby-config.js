@@ -13,13 +13,6 @@ module.exports = themeOptions => {
           path: options.postsPath,
         },
       },
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: options.pagesPath,
-          path: options.pagesPath,
-        },
-      },
       mdx && {
         resolve: `gatsby-plugin-mdx`,
         options: {

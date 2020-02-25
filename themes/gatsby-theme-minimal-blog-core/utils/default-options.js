@@ -2,7 +2,6 @@ module.exports = themeOptions => {
   const basePath = themeOptions.basePath || `/`
   const blogPath = themeOptions.blogPath || `/blog`
   const postsPath = themeOptions.postsPath || `content/posts`
-  const pagesPath = themeOptions.pagesPath || `content/pages`
   const tagsPath = themeOptions.tagsPath || `/tags`
   const externalLinks = themeOptions.externalLinks || []
   const navigation = themeOptions.navigation || []
@@ -12,7 +11,6 @@ module.exports = themeOptions => {
     basePath,
     blogPath,
     postsPath,
-    pagesPath,
     tagsPath,
     externalLinks,
     navigation,

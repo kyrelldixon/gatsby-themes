@@ -46,7 +46,7 @@ const ContactPage = () => (
       </div>
       <div
         style={{ backgroundColor: `rgb(0, 207, 255)` }}
-        className="rounded-md px-4 py-6 text-white text-sm mb-8 mx-8"
+        className="rounded-md px-4 py-6 text-white text-sm mb-6 md:mb-8 mx-8"
       >
         <h3 className="font-bold text-3xl leading-tight mb-4">General Questions</h3>
         <p className="mb-4">
@@ -64,19 +64,32 @@ const ContactPage = () => (
         </a>
       </div>
     </div>
-    <div className="text-center">
+    <div className="text-center mb-16">
       <p className="mb-6 text-xl md:text-2xl">
-        You can also just send me <br className="md:hidden" />an{" "}
-        <a href="mailto:hello@kyrelldixon.com" className="text-primary font-semibold">
+        You can also just send me <br className="md:hidden" />
+        an{` `}
+        <a
+          href="mailto:hello@kyrelldixon.com"
+          className="text-primary font-semibold"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           email
-        </a>{" "}
-        or{" "}
-        <a href="https://twitter.com/kyrelldixon" className="text-primary font-semibold">
+        </a>
+        {` `}or{` `}
+        <a
+          href="https://twitter.com/kyrelldixon"
+          className="text-primary font-semibold"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           tweet
         </a>
         .
       </p>
-      <a className="text-primary text-2xl font-semibold md:text-3xl" href="mailto:hello@kyrelldixon.com">hello@kyrelldixon.com</a>
+      <a className="text-primary text-2xl font-semibold md:text-3xl" href="mailto:hello@kyrelldixon.com">
+        hello@kyrelldixon.com
+      </a>
     </div>
   </Layout>
 )

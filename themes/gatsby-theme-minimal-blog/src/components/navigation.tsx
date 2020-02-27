@@ -31,7 +31,7 @@ const Navigation = ({ nav, toggleNav, navOpen }: NavigationProps) => {
           <div sx={{ display: [`none`, `block`], a: { color: `heading` } }}>
             {nav.map(item =>
               !item.slug.includes(`contact`) ? (
-                <NavItem to={replaceSlashes(`/${basePath}/${item.slug}`)} title={item.title} />
+                <NavItem key={item.title} to={replaceSlashes(`/${basePath}/${item.slug}`)} title={item.title} />
               ) : null
             )}
           </div>

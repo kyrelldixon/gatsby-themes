@@ -5,7 +5,7 @@ import SEO from "@lekoarts/gatsby-theme-minimal-blog/src/components/seo"
 const ContactPage = () => (
   <Layout>
     <SEO title="Contact" />
-    <div className="text-center flex flex-col items-center max-w-lg md:max-w-2xl mx-auto mb-16 md:mb-24">
+    <div className="text-center flex flex-col items-center max-w-lg md:max-w-2xl mx-auto mb-16 md-8 md:pt-12 md:mb-24">
       <p className="text-md opacity-50 mb-3 md:md-2">What are you working on?</p>
       <h2 className="text-5xl font-bold mb-4 text-black leading-tight md:md-8 md:text-6xl ">
         Let's talk

@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
 import Layout from "./layout"
 import Listing from "./listing"
 import SEO from "./seo"
@@ -22,7 +21,7 @@ const Blog = ({ posts }: PostsProps) => {
   return (
     <Layout>
       <SEO title="Blog" />
-      <div className="text-center max-w-lg mx-auto mb-16 md:mb-24">
+      <div className="text-center max-w-lg mx-auto mb-16 md:mb-24 md:pt-8">
         <p className="text-md opacity-50 mb-3 md:mb-6">Discover more of my</p>
         <h2 className="text-5xl font-bold mb-6 text-black leading-10 md:text-6xl md:mb-8">Articles</h2>
         <p className="text-lg mb-4 md:text-xl md:mb-6">

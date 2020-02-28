@@ -23,7 +23,7 @@ const Homepage = ({ posts }: PostsProps) => {
 
   return (
     <Layout>
-      <section className="flex flex-col flex-start items-start mb-24 max-w-md md:mx-auto md:text-center md:items-center">
+      <section className="flex flex-col flex-start items-start mb-24 pt-12 max-w-md md:mx-auto md:text-center md:items-center md:pt-12">
         <h1 style={{ left: `-3px` }} className="text-6xl font-bold text-black mb-4 leading-none">
           Developer Coach
         </h1>
@@ -60,7 +60,7 @@ const Homepage = ({ posts }: PostsProps) => {
       <section className="flex flex-col justify-start max-w-lg mb-20 md:mx-auto">
         <h2 className="text-black text-3xl font-bold md:text-center mb-6">Recent Articles</h2>
         <Listing posts={posts} showTags={false} />
-        <Link className="md:text-center text-primary hover:underline" to={replaceSlashes(`/${basePath}/${blogPath}`)}>More Articles</Link>
+        <Link className="md:text-center md:text-lg text-primary hover:underline" to={replaceSlashes(`/${basePath}/${blogPath}`)}>More Articles</Link>
       </section>
     </Layout>
   )

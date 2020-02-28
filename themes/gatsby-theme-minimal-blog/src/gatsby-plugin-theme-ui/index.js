@@ -98,7 +98,8 @@ export default {
     },
     ...headingStyles,
     Container: {
-      padding: [3, 4],
+      paddingLeft: [3, 4],
+      paddingRight: [3, 4],
     },
     blockquote: {
       borderLeftColor: `primary`,

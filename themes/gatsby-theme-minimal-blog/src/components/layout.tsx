@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from "react"
 import { Global } from "@emotion/core"
-import { Main, Styled, Container, css, jsx } from "theme-ui"
+import { Main, Styled, css, jsx } from "theme-ui"
 import "typeface-ibm-plex-sans"
 import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
 import "../styles/style.css"
@@ -20,7 +20,7 @@ const Layout = ({ children, className }: LayoutProps) => {
   const toggleNav = () => setNavOpen(!navOpen)
 
   return (
-    <Styled.root data-testid="theme-root">
+    <Styled.root className="px-4" data-testid="theme-root">
       <Global
         styles={css({
           "*": {
@@ -45,14 +45,12 @@ const Layout = ({ children, className }: LayoutProps) => {
       />
       <SEO />
       <SkipNavLink>Skip to content</SkipNavLink>
-      <Container>
-        <Header nav={nav} basePath={basePath} toggleNav={toggleNav} navOpen={navOpen} />
-        {navOpen && <MobileMenu nav={nav} basePath={basePath} />}
-        <Main id="skip-nav" css={css({ ...CodeStyles })} className={className} sx={{ pt: `100px` }}>
-          {children}
-        </Main>
-        <Footer />
-      </Container>
+      <Header nav={nav} basePath={basePath} toggleNav={toggleNav} navOpen={navOpen} />
+      {navOpen && <MobileMenu nav={nav} basePath={basePath} />}
+      <Main id="skip-nav" css={css({ ...CodeStyles })} className={className} sx={{ pt: `100px` }}>
+        {children}
+      </Main>
+      <Footer />
     </Styled.root>
   )
 }

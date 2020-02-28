@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
 import BlogListItem from "./blog-list-item"
 
 type ListingProps = {
@@ -17,7 +16,7 @@ type ListingProps = {
 }
 
 const Listing = ({ posts, className, showTags = true }: ListingProps) => (
-  <section sx={{ mb: [5, 6, 7] }} className={className}>
+  <section className={className}>
     {posts.map(post => (
       <BlogListItem key={post.slug} post={post} showTags={showTags} />
     ))}

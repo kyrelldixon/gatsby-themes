@@ -19,7 +19,7 @@ const Header = ({ nav, basePath, toggleNav, navOpen }) => {
         borderColor: `#ececec`,
       }}
     >
-      <div className="lg:text-lg" sx={{ px: 16, py: 3 }}>
+      <div className="lg:text-lg max-w-5xl md:mx-auto" sx={{ px: 16, py: 3 }}>
         <Flex
           sx={{
             alignItems: `center`,

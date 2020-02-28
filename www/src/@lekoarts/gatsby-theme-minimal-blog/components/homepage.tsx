@@ -37,7 +37,7 @@ const Homepage = ({ posts }: PostsProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Get Started
+            Work With Me
           </a>
           <Link
             to="/contact"
@@ -60,7 +60,12 @@ const Homepage = ({ posts }: PostsProps) => {
       <section className="flex flex-col justify-start max-w-lg mb-20 md:mx-auto">
         <h2 className="text-black text-3xl font-bold md:text-center mb-6">Recent Articles</h2>
         <Listing posts={posts} showTags={false} />
-        <Link className="md:text-center md:text-lg text-primary hover:underline" to={replaceSlashes(`/${basePath}/${blogPath}`)}>More Articles</Link>
+        <Link
+          className="md:text-center md:text-lg text-primary hover:underline"
+          to={replaceSlashes(`/${basePath}/${blogPath}`)}
+        >
+          More Articles
+        </Link>
       </section>
     </Layout>
   )

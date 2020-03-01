@@ -5,35 +5,37 @@ const headingStyles = {
     ...tailwind.styles.h1,
     color: `heading`,
     fontSize: [5, 6, 7],
-    mt: 2,
+    mb: 4,
   },
   h2: {
     ...tailwind.styles.h2,
     color: `heading`,
-    fontSize: [4, 5, 6],
-    mt: 2,
+    fontSize: [3, 4, 5],
+    mb: 4,
   },
   h3: {
     ...tailwind.styles.h3,
     color: `heading`,
-    fontSize: [3, 4, 5],
-    mt: 3,
+    fontSize: [2, 3, 4],
+    mb: 4,
   },
   h4: {
     ...tailwind.styles.h4,
     color: `heading`,
-    fontSize: [2, 3, 4],
+    fontSize: [1, 2, 3],
+    mb: 4,
   },
   h5: {
     ...tailwind.styles.h5,
     color: `heading`,
     fontSize: [1, 2, 3],
+    mb: 4,
   },
   h6: {
     ...tailwind.styles.h6,
     color: `heading`,
     fontSize: 1,
-    mb: 2,
+    mb: 4,
   },
 }
 
@@ -75,6 +77,7 @@ export default {
       fontSize: [1, 1, 2],
       letterSpacing: `-0.003em`,
       lineHeight: `body`,
+      mb: 4,
       "--baseline-multiplier": 0.179,
       "--x-height-multiplier": 0.35,
     },
@@ -86,6 +89,8 @@ export default {
         "--baseline-multiplier": 0.179,
         "--x-height-multiplier": 0.35,
       },
+      mb: 4,
+      listStyleType: `disc`,
     },
     ol: {
       li: {
@@ -95,12 +100,10 @@ export default {
         "--baseline-multiplier": 0.179,
         "--x-height-multiplier": 0.35,
       },
+      mb: 4,
+      listStyleType: `decimal`,
     },
     ...headingStyles,
-    Container: {
-      paddingLeft: [3, 4],
-      paddingRight: [3, 4],
-    },
     blockquote: {
       borderLeftColor: `primary`,
       borderLeftStyle: `solid`,
@@ -111,6 +114,12 @@ export default {
         fontStyle: `italic`,
       },
     },
+  },
+  container: {
+    maxWidth: `42rem`,
+    paddingLeft: [3, 4],
+    paddingRight: [3, 4],
+    paddingTop: [4, 5],
   },
   text: {
     ...headingStyles,

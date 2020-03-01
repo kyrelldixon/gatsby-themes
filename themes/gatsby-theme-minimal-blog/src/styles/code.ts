@@ -36,6 +36,7 @@ export default {
     py: 1,
   },
   ".gatsby-highlight": {
+    mb: 4,
     fontSize: 1,
     position: `relative`,
     webkitOverflowScrolling: `touch`,

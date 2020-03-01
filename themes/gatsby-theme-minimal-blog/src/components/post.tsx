@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
+import { Container } from "@theme-ui/components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 import Layout from "./layout"
@@ -41,21 +42,35 @@ const Post = ({ data: { post } }: PostProps) => (
       description={post.description ? post.description : post.excerpt}
       image={post.banner ? post.banner.childImageSharp.resize.src : undefined}
     />
-    <Styled.h2>{post.title}</Styled.h2>
-    <p sx={{ color: `secondary`, mt: 3, a: { color: `secondary` }, fontSize: [1, 1, 2] }}>
-      <time>{post.date}</time>
-      {post.tags && (
-        <React.Fragment>
-          {` — `}
-          <ItemTags tags={post.tags} />
-        </React.Fragment>
-      )}
-      {` — `}
-      <span>{post.timeToRead} min read</span>
-    </p>
-    <section sx={{ my: 5, ".gatsby-resp-image-wrapper": { my: [4, 4, 5], boxShadow: shadow.join(`, `) } }}>
-      <MDXRenderer>{post.body}</MDXRenderer>
-    </section>
+    <Container>
+      <h2
+        sx={{
+          color: `heading`,
+          textAlign: [`left`, `center`],
+          fontSize: [4, 5, 6],
+          mb: 4,
+          mx: `auto`,
+          fontWeight: 700,
+          lineHeight: 1.3,
+        }}
+      >
+        {post.title}
+      </h2>
+      <p sx={{ color: `secondary`, a: { color: `secondary` }, fontSize: [1, 1, 2], textAlign: [`left`, `center`] }}>
+        <time>{post.date}</time>
+        {post.tags && (
+          <React.Fragment>
+            {` — `}
+            <ItemTags tags={post.tags} />
+          </React.Fragment>
+        )}
+        {` — `}
+        <span>{post.timeToRead} min read</span>
+      </p>
+      <section sx={{ my: 5, ".gatsby-resp-image-wrapper": { my: [4, 4, 5], boxShadow: shadow.join(`, `) } }}>
+        <MDXRenderer>{post.body}</MDXRenderer>
+      </section>
+    </Container>
   </Layout>
 )
 

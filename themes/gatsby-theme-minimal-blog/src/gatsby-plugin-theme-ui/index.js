@@ -116,7 +116,7 @@ export default {
     },
   },
   container: {
-    maxWidth: `42rem`,
+    maxWidth: `56rem`,
     paddingLeft: [3, 4],
     paddingRight: [3, 4],
     paddingTop: [4, 5],

@@ -28,7 +28,7 @@ const Blog = ({ posts }: PostsProps) => {
           Check out some of my most popular tutorials where I make complex code simple. Sign up to receive my
           newsletter, so you never miss a new article.
         </p>
-        <form className="flex justify-between shadow-md max-w-sm mx-auto">
+        {/* <form className="flex justify-between shadow-md max-w-sm mx-auto">
           <input
             id="email"
             className="px-4 py-2 flex-grow rounded-l-sm"
@@ -39,9 +39,9 @@ const Blog = ({ posts }: PostsProps) => {
           <button className="text-white px-4 py-2 rounded-r-sm bg-primary" type="submit">
             Subscribe
           </button>
-        </form>
+        </form> */}
       </div>
-      <Listing className="max-w-md mx-auto md:max-w-lg lg:max-w-2xl md:text-center" posts={posts} />
+      <Listing className="max-w-md mx-auto md:max-w-lg" posts={posts} />
     </Layout>
   )
 }

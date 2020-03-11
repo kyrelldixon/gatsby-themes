@@ -69,7 +69,7 @@ gatsby new minimal-blog LekoArts/gatsby-starter-minimal-blog
 | `basePath`        | `/`             | Root url for the theme                                                                                    |
 | `blogPath`        | `/blog`         | url for the blog post overview page                                                                       |
 | `tagsPath`        | `/tags`         | url for the tags overview page and prefix for tags (e.g. `/tags/my-tag`)                                  |
-| `postsPath`       | `content/posts` | Location of posts                                                                                         |                                                               |
+| `postsPath`       | `content/posts` | Location of posts                                                                                         |  |
 | `mdx`             | `true`          | Configure `gatsby-plugin-mdx` (if your website already is using the plugin pass `false` to turn this off) |
 | `showLineNumbers` | `true`          | Show line numbers in code blocks                                                                          |
 | `navigation`      | `[]`            | Add links to your internal sites to the left part of the header                                           |
@@ -132,7 +132,7 @@ module.exports = {
     // Will be set on the <html /> tag
     siteLanguage: `en`,
     // Used for og:image and must be placed inside the `static` folder
-    siteImage: `/banner.jpg`,
+    siteImage: `/banner.png`,
     // Twitter Handle
     author: `@lekoarts_de`,
     // Links displayed in the header on the right side
